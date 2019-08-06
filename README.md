@@ -1,9 +1,9 @@
 # VR Payment
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DemigodCode/omnipay-vr-pay/master/LICENSE.md)
-[![Packagist](https://img.shields.io/packagist/v/antibodies-online/omnipay-vr-pay.svg?maxAge=2592000)](https://packagist.org/packages/antibodies-online/omnipay-vr-pay)
-[![GitHub issues](https://img.shields.io/github/issues/DemigodCode/omnipay-vr-pay.svg)](https://github.com/DemigodCode/omnipay-vr-pay/issues)
-[![Build Status](https://travis-ci.org/DemigodCode/omnipay-vr-pay.svg?branch=issue29)](https://travis-ci.org/DemigodCode/omnipay-vr-pay)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DemigodCode/omnipay-vr-payment/master/LICENSE.md)
+[![Packagist](https://img.shields.io/packagist/v/antibodies-online/omnipay-vr-payment.svg?maxAge=2592000)](https://packagist.org/packages/antibodies-online/omnipay-vr-payment)
+[![GitHub issues](https://img.shields.io/github/issues/DemigodCode/omnipay-vr-payment.svg)](https://github.com/DemigodCode/omnipay-vr-payment/issues)
+[![Build Status](https://travis-ci.org/DemigodCode/omnipay-vr-payment.svg?branch=master)](https://travis-ci.org/DemigodCode/omnipay-vr-payment)
 
 Table of Contents
 =================
