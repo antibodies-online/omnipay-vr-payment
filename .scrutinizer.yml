@@ -1,0 +1,14 @@
+inherit: true
+
+tools:
+  external_code_coverage: true
+  sensiolabs_security_checker:
+    enabled: true
+
+filter:
+  excluded_paths:
+    - 'vendor/*'
+    - 'tests/*'
+    - 'docs/*'
+    - 'bin/*'
+    - 'tests/*'
