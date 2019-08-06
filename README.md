@@ -109,7 +109,7 @@ This function calls the gateway to create a new checkout id, which is used to ge
 {/literal}
 ````
 ````php
-$gateway = Omnipay\Omnipay::create('VrPay_CopyAndPay');
+$gateway = Omnipay\Omnipay::create('VrPayment_VrPayment');
 // Set authentication info
 $request = $gateway->creditCardCheck()->send();
 $javascript_url = $request->getPaymentFormJsUrl();
@@ -119,7 +119,7 @@ This function calls the gateway using the reference provided in the query parame
 to query for the payment information of the creditCardCheck form result.
 This function will extract all needed information out of the url by itself.
 ````php
-$gateway = Omnipay\Omnipay::create('VrPay_CopyAndPay');
+$gateway = Omnipay\Omnipay::create('VrPayment_VrPayment');
 $cardCheckStatusResponse = $gateway->creditCardCheckStatus()->send();
 if ($cardCheckStatusResponse->isSuccessful()) {
     $token = $cardCheckStatusResponse->getTransactionReference();

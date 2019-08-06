@@ -36,7 +36,7 @@ class VrPaymentGateway extends AbstractGateway
     {
         if(!$this->getTestMode()) {
             return [
-                'endpoint' => self::ENDPOINT_TEST
+                'endpoint' => self::ENDPOINT_LIVE
             ];
         } else {
             return [
