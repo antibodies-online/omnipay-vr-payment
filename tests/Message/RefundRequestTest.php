@@ -54,7 +54,7 @@ class RefundRequestTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertSame($response->getData()['paymentType'], 'RF');
         $this->assertSame('8ac7a4a06c60faba016c6111f9574159', $response->getTransactionReference());
-        $this->assertSame('Omnipay\VrPay\Message\RefundResponse', get_class($response));
+        $this->assertSame('Omnipay\VrPayment\Message\RefundResponse', get_class($response));
     }
 
 }

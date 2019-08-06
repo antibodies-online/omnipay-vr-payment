@@ -32,7 +32,7 @@ class CreditCardCheckRequestTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertSame('2CFB6EE6F889C290A469A5C75755267D.uat01-vm-tx03', $response->getCheckoutId());
         $this->assertSame('https://test.vr-pay-ecommerce.de/v1/paymentWidgets.js?checkoutId=2CFB6EE6F889C290A469A5C75755267D.uat01-vm-tx03', $response->getPaymentFormJsUrl());
-        $this->assertSame('Omnipay\VrPay\Message\CreditCardCheckResponse', get_class($response));
+        $this->assertSame('Omnipay\VrPayment\Message\CreditCardCheckResponse', get_class($response));
     }
 
 }

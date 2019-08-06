@@ -4,8 +4,6 @@
 namespace Omnipay\VrPayment\Message;
 
 
-use Omnipay\Common\Message\ResponseInterface;
-
 class PurchaseRequest extends AbstractRequest
 {
 

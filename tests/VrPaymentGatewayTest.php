@@ -27,7 +27,7 @@ class VrPaymentGatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->purchase($this->options);
 
-        $this->assertInstanceOf('Omnipay\VrPay\Message\PurchaseRequest', $request);
+        $this->assertInstanceOf('Omnipay\VrPayment\Message\PurchaseRequest', $request);
         $this->assertEquals('bar', $request->getToken());
         $this->assertEquals('500', $request->getAmountInteger());
     }

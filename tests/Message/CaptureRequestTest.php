@@ -54,7 +54,7 @@ class CaptureRequestTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertSame($response->getData()['paymentType'], 'CP');
         $this->assertSame('8ac7a49f6c619208016c61c907ff73bc', $response->getTransactionReference());
-        $this->assertSame('Omnipay\VrPay\Message\CaptureResponse', get_class($response));
+        $this->assertSame('Omnipay\VrPayment\Message\CaptureResponse', get_class($response));
     }
 
 }

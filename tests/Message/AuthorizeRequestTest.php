@@ -3,7 +3,7 @@
 namespace Omnipay\VrPayment\Message;
 
 use Omnipay\Tests\TestCase;
-use Omnipay\VrPay\Message\PurchaseRequest;
+use Omnipay\VrPayment\Message\PurchaseRequest;
 
 class AuthorizeRequestTest extends TestCase
 {
@@ -43,7 +43,7 @@ class AuthorizeRequestTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertSame($response->getData()['paymentType'], 'PA');
         $this->assertSame('8ac7a49f6c619208016c61ca7b0c7680', $response->getTransactionReference());
-        $this->assertSame('Omnipay\VrPay\Message\AuthorizeResponse', get_class($response));
+        $this->assertSame('Omnipay\VrPayment\Message\AuthorizeResponse', get_class($response));
     }
 
 }

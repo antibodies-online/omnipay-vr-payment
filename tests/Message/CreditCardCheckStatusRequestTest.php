@@ -40,7 +40,7 @@ class CreditCardCheckStatusRequestTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertSame('8ac7a4a06c61a259016c62136baa6797', $response->getTransactionReference());
         $this->assertSame('VISA', $response->getCardType());
-        $this->assertSame('Omnipay\VrPay\Message\CreditCardCheckStatusResponse', get_class($response));
+        $this->assertSame('Omnipay\VrPayment\Message\CreditCardCheckStatusResponse', get_class($response));
     }
 
 }
