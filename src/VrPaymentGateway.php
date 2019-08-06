@@ -68,7 +68,7 @@ class VrPaymentGateway extends AbstractGateway
         return $this->getParameter('entityId');
     }
 
-    public function setEntityId(string $entityId) {
+    public function setEntityId($entityId) {
         return $this->setParameter('entityId', $entityId);
     }
 
@@ -76,7 +76,7 @@ class VrPaymentGateway extends AbstractGateway
         return $this->getParameter('accessToken');
     }
 
-    public function setAccessToken(string $accessToken) {
+    public function setAccessToken($accessToken) {
         $this->setParameter('accessToken', $accessToken);
     }
 }
