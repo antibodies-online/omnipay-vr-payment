@@ -120,8 +120,8 @@ to query for the payment information of the creditCardCheck form result.
 This function will extract all needed information out of the url by itself.
 ````php
 $gateway = Omnipay\Omnipay::create('VrPay_CopyAndPay');
-$CarCheckStatusResponse = $gateway->creditCardCheckStatus()->send();
-if ($CarCheckStatusResponse->isSuccessful()) {
-    $token = $CarCheckStatusResponse->getTransactionReference();
+$cardCheckStatusResponse = $gateway->creditCardCheckStatus()->send();
+if ($cardCheckStatusResponse->isSuccessful()) {
+    $token = $cardCheckStatusResponse->getTransactionReference();
 }
 ````
