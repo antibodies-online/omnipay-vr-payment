@@ -7,6 +7,10 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/?branch=master)
 
+
+Table of Contents
+=================
+
   * [Table of Contents](#table-of-contents)
   * [Omnipay: <a href="https://www.vr-payment.de//">VR Payment</a>](#omnipay-vr-payment)
     * [Installation](#installation)
