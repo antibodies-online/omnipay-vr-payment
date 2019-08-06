@@ -10,6 +10,8 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
 
     abstract protected function getEndpointRoute();
 
+    abstract protected function createResponse($data);
+
     public function getData()
     {
         $data = array();
