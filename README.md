@@ -1,11 +1,11 @@
 # VR Payment
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DemigodCode/omnipay-vr-payment/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/antibodies-online/omnipay-vr-payment/master/LICENSE.md)
 [![Packagist](https://img.shields.io/packagist/v/antibodies-online/omnipay-vr-payment.svg?maxAge=2592000)](https://packagist.org/packages/antibodies-online/omnipay-vr-payment)
-[![GitHub issues](https://img.shields.io/github/issues/DemigodCode/omnipay-vr-payment.svg)](https://github.com/DemigodCode/omnipay-vr-payment/issues)
-[![Build Status](https://travis-ci.org/DemigodCode/omnipay-vr-payment.svg?branch=master)](https://travis-ci.org/DemigodCode/omnipay-vr-payment)
-[![Code Coverage](https://scrutinizer-ci.com/g/DemigodCode/omnipay-vr-payment/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/DemigodCode/omnipay-vr-payment/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DemigodCode/omnipay-vr-payment/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DemigodCode/omnipay-vr-payment/?branch=master)
+[![GitHub issues](https://img.shields.io/github/issues/antibodies-online/omnipay-vr-payment.svg)](https://github.com/antibodies-online/omnipay-vr-payment/issues)
+[![Build Status](https://travis-ci.org/antibodies-online/omnipay-vr-payment.svg?branch=master)](https://travis-ci.org/antibodies-online/omnipay-vr-payment)
+[![Code Coverage](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/?branch=master)
 
 Table of Contents
 =================
