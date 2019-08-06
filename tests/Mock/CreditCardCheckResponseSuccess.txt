@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Date: Sat, Mon, 05 Aug 2019 12:34:58 GMT
+Server: Apache-Coyote/1.1
+X-Content-Type-Options: nosniff
+Content-Length: 310
+
+{"result":{"code":"000.200.100","description":"successfully created checkout"},"buildNumber":"235e264ce798be6e65ec841a0f6a22860e673fd0@2019-08-05 03:42:28 +0000","timestamp":"2019-08-05 13:36:38+0000","ndc":"2CFB6EE6F889C290A469A5C75755267D.uat01-vm-tx03","id":"2CFB6EE6F889C290A469A5C75755267D.uat01-vm-tx03"}

@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Date: Mon, 05 Aug 2019 13:59:07 GMT
+Server: Apache-Coyote/1.1
+X-Content-Type-Options: nosniff
+Content-Length: 598
+
+{"id":"8ac7a4a06c61a259016c62136baa6797","paymentBrand":"VISA","result":{"code":"000.100.110","description":"Request successfully processed in 'Merchant in Integrator Test Mode'"},"card":{"bin":"420000","last4Digits":"0000","holder":"dsadsad","expiryMonth":"12","expiryYear":"2020"},"customParameters":{"SHOPPER_EndToEndIdentity":"d5e63a48c1659f4a06d1d72861c672f807042c90e616038994e3e7aa3a05be74"},"risk":{"score":"100"},"buildNumber":"235e264ce798be6e65ec841a0f6a22860e673fd0@2019-08-05 03:42:28 +0000","timestamp":"2019-08-05 13:58:55+0000","ndc":"A8B8B00F84C2A0632BC96AC7924AB54E.uat01-vm-tx02"}
