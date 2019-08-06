@@ -1,0 +1,25 @@
+{
+    "name": "antibodies-online/omnipay-vr-payment",
+    "version": "1.0.0",
+    "description": "Test",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benedikt Lenzen",
+            "email": "benedikt.lenzen@antibodies-online.com"
+        }
+    ],
+    "require": {
+        "omnipay/common": "^3"
+    },
+    "require-dev": {
+        "omnipay/tests": "^3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\VrPayment\\" : "src/"
+        }
+    },
+    "prefer-stable": true
+}

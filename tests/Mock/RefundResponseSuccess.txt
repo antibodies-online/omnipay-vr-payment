@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Date: Mon, 05 Aug 2019 13:23:40 GMT
+Server: Apache-Coyote/1.1
+X-Content-Type-Options: nosniff
+Content-Length: 751
+
+{"id":"8ac7a4a26c61a085016c61f322860f7d","referencedId":"8ac7a4a06c60faba016c6111f9574159","paymentType":"RF","amount":"10.00","currency":"EUR","descriptor":"8749.5073.2368 Kreditkarten","merchantTransactionId":"M1-02082_87-1","result":{"code":"000.100.110","description":"Request successfully processed in 'Merchant in Integrator Test Mode'"},"resultDetails":{"ExtendedDescription":"Successfully processed","ConnectorTxID1":"8ac7a4a26c61a085016c61f322860f7d","ConnectorTxID3":"61a085016c61f322860f7d","ConnectorTxID2":"8ac7a4a2","AcquirerResponse":"00"},"buildNumber":"235e264ce798be6e65ec841a0f6a22860e673fd0@2019-08-05 03:42:28 +0000","timestamp":"2019-08-05 13:23:39+0000","ndc":"8ac7a4ca6c1daae9016c1f2845c302d7_d58664ee4cfb479b9f63dc5c0ca429a1"}
