@@ -10,6 +10,7 @@ class VrPaymentGateway extends AbstractGateway
 {
 
     const ENDPOINT_TEST = 'https://test.vr-pay-ecommerce.de';
+    const ENDPOINT_LIVE = 'https://vr-pay-ecommerce.de';
 
     public function authorize(array $parameters = array())
     {
@@ -33,9 +34,15 @@ class VrPaymentGateway extends AbstractGateway
 
     public function getDefaultParameters()
     {
-        return [
-            'endpoint' => self::ENDPOINT_TEST
-        ];
+        if(!$this->getTestMode()) {
+            return [
+                'endpoint' => self::ENDPOINT_LIVE
+            ];
+        } else {
+            return [
+                'endpoint' => self::ENDPOINT_TEST
+            ];
+        }
     }
 
     public function getName()

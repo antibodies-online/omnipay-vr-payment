@@ -25,7 +25,6 @@ matrix:
 
 before_script:
   - composer self-update
-  - if [ "$SYMFONY_VERSION" != "" ]; then composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
 script: php vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
