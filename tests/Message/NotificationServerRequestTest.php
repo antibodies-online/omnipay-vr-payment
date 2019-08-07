@@ -25,7 +25,7 @@ class NotificationServerRequestTest extends TestCase
         if(PHP_VERSION_ID >= 70100) {
             $encrypted = openssl_encrypt($json, 'aes-256-gcm', $this->key, OPENSSL_RAW_DATA, $this->iv, $this->auth_tag);
         } else {
-            $encrypted = \Sodium\crypto_aead_aes256gcm_encrypt($json . $this->auth_tag, $this->iv, $this->key);
+            $encrypted = \Sodium\crypto_aead_aes256gcm_encrypt($json . $this->auth_tag, $this->iv, $this->key, '');
         }
 
         $request = new Request([], [], [], [], [], ['HTTP_X-Initialization-Vector' => bin2hex($this->iv), 'HTTP_X-Authentication-Tag' => bin2hex($this->auth_tag)], bin2hex($encrypted));
