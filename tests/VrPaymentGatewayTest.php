@@ -31,4 +31,12 @@ class VrPaymentGatewayTest extends GatewayTestCase
         $this->assertEquals('bar', $request->getToken());
         $this->assertEquals('500', $request->getAmountInteger());
     }
+
+    public function testEndpointDependsOnTestMode() {
+        $this->assertSame(VrPaymentGateway::ENDPOINT_LIVE, $this->gateway->getEndpoint());
+        $this->gateway->setTestMode(true);
+        $this->assertSame(VrPaymentGateway::ENDPOINT_TEST, $this->gateway->getEndpoint());
+        $this->gateway->setTestMode(false);
+        $this->assertSame(VrPaymentGateway::ENDPOINT_LIVE, $this->gateway->getEndpoint());
+    }
 }

@@ -5,12 +5,26 @@ namespace Omnipay\VrPayment;
 
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\VrPayment\Message\NotificationServerRequest;
 
 class VrPaymentGateway extends AbstractGateway
 {
 
     const ENDPOINT_TEST = 'https://test.vr-pay-ecommerce.de';
     const ENDPOINT_LIVE = 'https://vr-pay-ecommerce.de';
+
+    public function getDefaultParameters()
+    {
+        return [
+            'testMode' => false,
+            'endpoint' => self::ENDPOINT_LIVE
+        ];
+    }
+
+    public function getName()
+    {
+        return 'VR Payment Copy and Pay';
+    }
 
     public function authorize(array $parameters = array())
     {
@@ -32,22 +46,9 @@ class VrPaymentGateway extends AbstractGateway
         return $this->createRequest(Message\RefundRequest::class, $parameters);
     }
 
-    public function getDefaultParameters()
+    public function acceptNotification(array $parameters = array())
     {
-        if(!$this->getTestMode()) {
-            return [
-                'endpoint' => self::ENDPOINT_LIVE
-            ];
-        } else {
-            return [
-                'endpoint' => self::ENDPOINT_TEST
-            ];
-        }
-    }
-
-    public function getName()
-    {
-        return 'VR Payment Copy and Pay';
+        return $this->createRequest(Message\NotificationServerRequest::class, $parameters);
     }
 
     /**
@@ -85,5 +86,23 @@ class VrPaymentGateway extends AbstractGateway
 
     public function setAccessToken($accessToken) {
         $this->setParameter('accessToken', $accessToken);
+    }
+
+    public function getNotificationDecryptionKey() {
+        return $this->getParameter('notificationDecryptionKey');
+    }
+
+    public function setNotificationDecryptionKey($key) {
+        $this->setParameter('notificationDecryptionKey', $key);
+    }
+
+    public function setTestMode($value)
+    {
+        if($value) {
+            $this->setEndpoint(self::ENDPOINT_TEST);
+        } else {
+            $this->setEndpoint(self::ENDPOINT_LIVE);
+        }
+        return parent::setTestMode($value);
     }
 }

@@ -11,10 +11,14 @@
         }
     ],
     "require": {
+        "php": "^7.1",
         "omnipay/common": "^3"
     },
     "require-dev": {
         "omnipay/tests": "^3"
+    },
+    "suggest": {
+        "ext-libsodium": "Needed to support acceptNotification requests in PHP Versions < 7.1"
     },
     "autoload": {
         "psr-4": {
