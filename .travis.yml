@@ -9,6 +9,13 @@ php:
 
 sudo: false
 
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:ondrej/php'
+    packages: &default_packages
+      - libsodium-dev
+
 matrix:
   fast_finish: true
   include:
@@ -23,7 +30,12 @@ matrix:
     - php: 7.3
       env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 before_script:
+  - pecl install -f libsodium-1.0.6
   - composer self-update
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
