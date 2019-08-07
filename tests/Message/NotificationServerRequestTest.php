@@ -27,7 +27,7 @@ class NotificationServerRequestTest extends TestCase
         } else {
             $this->iv = \Sodium\randombytes_buf(\Sodium\CRYPTO_AEAD_AES256GCM_NPUBBYTES);
             $this->key = \Sodium\randombytes_buf(\Sodium\CRYPTO_AEAD_AES256GCM_KEYBYTES);
-            $encrypted = \Sodium\crypto_aead_aes256gcm_encrypt($json . $this->auth_tag, $this->iv, $this->key, '');
+            $encrypted = \Sodium\crypto_aead_aes256gcm_encrypt($json . $this->auth_tag, $this->iv, $this->key);
         }
 
         $request = new Request([], [], [], [], [], ['HTTP_X-Initialization-Vector' => bin2hex($this->iv), 'HTTP_X-Authentication-Tag' => bin2hex($this->auth_tag)], bin2hex($encrypted));
