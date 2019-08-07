@@ -25,7 +25,7 @@ Table of Contents
 
 Written to specication:
 
-* *[TECHNICAL REFERENCE](https://vr-pay-ecommerce.docs.oppwa.com/tutorials/integration-guide) (2019-08-05)
+* *[TECHNICAL REFERENCE](https://vr-pay-ecommerce.docs.oppwa.com/) (2019-08-05)
 
 This package implements VR Payment support for [OmniPay](https://github.com/thephpleague/omnipay).
 
@@ -97,6 +97,22 @@ $request = $gateway->authorize([
 $response = $request->send();
 ````    
 
+## Parsing Webhooks
+There are different actions which are send via Webhook. For further documentation please read the [documentation](https://vr-pay-ecommerce.docs.oppwa.com/tutorials/webhooks/integration-guide)
+Omnipay provides a standard way to accept and read such notifications.
+However the returned Request object is not standardized and may differ in other implementations.
+
+````php
+$gateway = Omnipay\Omnipay::create('VrPayment_VrPayment');
+$gateway->setNotificationDecryptionKey('myDecryptionKey');
+
+$request = $gateway->acceptNotifications(); // Parses the HTTP Request
+$requqestArray = $request->getData();
+$response = $request->sendData();
+$response->sendData()->accept(); 
+````    
+
+
 ## Out of standard functions
 
 There are a couple of functions which are not defined in the standard of omnipay.
@@ -130,3 +146,8 @@ if ($cardCheckStatusResponse->isSuccessful()) {
     $token = $cardCheckStatusResponse->getTransactionReference();
 }
 ````
+
+## Contributing
+We really appreciate if you report bugs and errors. Feel free to ask for additional functionality.
+But be aware that the maintainers may not implement all features. If you can provide a Pull Request
+for your Features that would be amazing.
