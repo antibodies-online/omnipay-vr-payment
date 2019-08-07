@@ -174,7 +174,12 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
         $auth_tag = hex2bin($request->headers->get('X-Authentication-Tag'));
         $cipher_text = hex2bin($request->getContent());
 
-        $result = openssl_decrypt($cipher_text, "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $auth_tag);
+        if(PHP_VERSION_ID >= 70100) {
+            $result = openssl_decrypt($cipher_text, "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $auth_tag);
+        } else {
+            $cipher_text = $cipher_text . $auth_tag;
+            $result = \Sodium\crypto_aead_aes256gcm_decrypt($cipher_text, NULL, $iv, $key);
+        }
         return $result;
     }
 }

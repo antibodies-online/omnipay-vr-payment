@@ -22,7 +22,11 @@ class NotificationServerRequestTest extends TestCase
         $this->content = json_decode($json, true);
 
         $this->iv = openssl_random_pseudo_bytes(16);
-        $encrypted = openssl_encrypt($json, 'aes-256-gcm',$this->key, OPENSSL_RAW_DATA, $this->iv, $this->auth_tag);
+        if(PHP_VERSION_ID >= 70100) {
+            $encrypted = openssl_encrypt($json, 'aes-256-gcm', $this->key, OPENSSL_RAW_DATA, $this->iv, $this->auth_tag);
+        } else {
+            $encrypted = \Sodium\crypto_aead_aes256gcm_encrypt($this->content . $this->auth_tag, $this->iv, $this->key);
+        }
 
         $request = new Request([], [], [], [], [], ['HTTP_X-Initialization-Vector' => bin2hex($this->iv), 'HTTP_X-Authentication-Tag' => bin2hex($this->auth_tag)], bin2hex($encrypted));
         $this->gateway = new VrPaymentGateway($this->getHttpClient(), $request);
