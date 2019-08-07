@@ -23,14 +23,12 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
     const EVENT_SECURE_CHECK        = '3D';
 
     public function isValid() {
-        $data = [];
         try {
-            $this->getData();
+            $data = $this->getData();
+            if(is_array($data) && 0 < count($data)) {
+                return true;
+            }
         } catch (\Exception $exception) { }
-
-        if(is_array($data) && 0 < count($data)) {
-            return true;
-        }
 
         return false;
     }
