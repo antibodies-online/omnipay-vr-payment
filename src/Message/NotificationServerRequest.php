@@ -25,10 +25,8 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
     public function isValid() {
         $data = [];
         try {
-            $data = $this->getData();
-        } catch (\Exception $exception) {
-            print_r($exception->getMessage());
-        }
+            $this->getData();
+        } catch (\Exception $exception) { }
 
         if(is_array($data) && 0 < count($data)) {
             return true;
