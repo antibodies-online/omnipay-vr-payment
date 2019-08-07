@@ -26,6 +26,7 @@ class NotificationServerRequestTest extends TestCase
             $encrypted = openssl_encrypt($json, 'aes-256-gcm', $this->key, OPENSSL_RAW_DATA, $this->iv, $this->auth_tag);
         } else {
             $this->iv = \Sodium\randombytes_buf(\Sodium\CRYPTO_AEAD_AES256GCM_NPUBBYTES);
+            $this->key = \Sodium\randombytes_buf(\Sodium\CRYPTO_AEAD_AES256GCM_NPUBBYTES);
             $encrypted = \Sodium\crypto_aead_aes256gcm_encrypt($json . $this->auth_tag, $this->iv, $this->key, '');
         }
 
