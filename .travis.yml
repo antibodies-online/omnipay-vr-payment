@@ -8,13 +8,6 @@ php:
 
 sudo: false
 
-addons:
-  apt:
-    sources:
-      - sourceline: 'ppa:ondrej/php'
-    packages: &default_packages
-      - libsodium-dev
-
 matrix:
   fast_finish: true
   include:
