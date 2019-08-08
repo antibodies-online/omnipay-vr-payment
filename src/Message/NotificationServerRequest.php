@@ -28,7 +28,9 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
             if(is_array($data) && 0 < count($data)) {
                 return true;
             }
-        } catch (\Exception $exception) { }
+        } catch (\Exception $exception) {
+            // No need to return false here, it's done at the end of this function anyway.
+        }
 
         return false;
     }

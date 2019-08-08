@@ -148,6 +148,6 @@ if ($cardCheckStatusResponse->isSuccessful()) {
 ````
 
 ## Contributing
-We really appreciate if you report bugs and errors. Feel free to ask for additional functionality.
+We really appreciate if you report bugs and errors. Feel free to ask for additional functionality/fields.
 But be aware that the maintainers may not implement all features. If you can provide a Pull Request
 for your Features that would be amazing.
