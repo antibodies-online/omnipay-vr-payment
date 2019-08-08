@@ -69,23 +69,24 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
     public function getTransactionStatus()
     {
         if((bool)preg_match('/^(000\.000\.|000\.100\.1|000\.[36])/', $this->data['payload']['result']['code'])
-        || (bool)preg_match('/^(000\.200)/', $this->data['payload']['result']['code']))
-        if ($this->getTxStatus() == static::EVENT_REVERSAL
-            || $this->getTxStatus() == static::EVENT_REFUND
-            || $this->getTxStatus() == static::EVENT_CAPTURE
-            || $this->getTxStatus() == static::EVENT_DEBIT
-            || $this->getTxStatus() == static::EVENT_CREDIT
-        ) {
-            return static::STATUS_COMPLETED;
-        }
+        || (bool)preg_match('/^(000\.200)/', $this->data['payload']['result']['code'])) {
+            if ($this->getTxStatus() == static::EVENT_REVERSAL
+                || $this->getTxStatus() == static::EVENT_REFUND
+                || $this->getTxStatus() == static::EVENT_CAPTURE
+                || $this->getTxStatus() == static::EVENT_DEBIT
+                || $this->getTxStatus() == static::EVENT_CREDIT
+            ) {
+                return static::STATUS_COMPLETED;
+            }
 
-        if ($this->getTxStatus() == static::EVENT_AUTHORIZATION
-            || $this->getTxStatus() == static::EVENT_SECURE_CHECK
-            || $this->getTxStatus() == static::EVENT_CONFIRMATION
-            || $this->getTxStatus() == static::EVENT_DEBIT
-            || $this->getTxStatus() == static::EVENT_REGISTER
-        ) {
-            return static::STATUS_PENDING;
+            if ($this->getTxStatus() == static::EVENT_AUTHORIZATION
+                || $this->getTxStatus() == static::EVENT_SECURE_CHECK
+                || $this->getTxStatus() == static::EVENT_CONFIRMATION
+                || $this->getTxStatus() == static::EVENT_DEBIT
+                || $this->getTxStatus() == static::EVENT_REGISTER
+            ) {
+                return static::STATUS_PENDING;
+            }
         }
 
         return static::STATUS_FAILED;
