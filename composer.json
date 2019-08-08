@@ -1,6 +1,5 @@
 {
     "name": "antibodies-online/omnipay-vr-payment",
-    "version": "1.0.0",
     "description": "VR Payment gateway driver for the Omnipay PHP payment processing library",
     "keywords": [
         "vr",
