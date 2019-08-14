@@ -3,6 +3,7 @@
 
 namespace Omnipay\VrPayment\Message;
 
+use Omnipay\Common\CreditCard;
 use Omnipay\Common\Message\AbstractRequest as OmnipayAbstractRequest;
 
 abstract class AbstractRequest extends OmnipayAbstractRequest
@@ -17,6 +18,20 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         $data = array();
 
         $data['entityId'] = $this->getEntityId();
+
+        $card = $this->getCard();
+        if($card instanceof CreditCard) {
+            $data['billing.city'] = $card->getBillingCity();
+            $data['billing.country'] = $card->getBillingCountry();
+            $data['billing.street1'] = $card->getBillingAddress1();
+            $data['billing.street2'] = $card->getBillingAddress2();
+            $data['billing.postcode'] = $card->getBillingPostcode();
+            $data['billing.state'] = $card->getBillingState();
+            $data['customer.companyName'] = $card->getBillingCompany();
+            $data['customer.email'] = $card->getEmail();
+            $data['customer.givenName'] = $card->getFirstName();
+            $data['customer.surname'] = $card->getLastName();
+        }
         return $data;
     }
 

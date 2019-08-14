@@ -9,6 +9,10 @@ use Omnipay\Common\Message\RequestInterface;
 
 abstract class AbstractResponse extends OmnipayAbstractResponse
 {
+    public function getMessage()
+    {
+        return $this->getData()['result']['description'];
+    }
 
     public function isSuccessful()
     {
