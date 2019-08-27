@@ -48,7 +48,7 @@ to your `composer.json` file:
 
 or direct from [packagist](https://packagist.org/packages/antibodies-online/omnipay-vr-pay)
 
-    composer require "antibodies-online/omnipay-vr-pay: ~1.0"
+    composer require "antibodies-online/omnipay-vr-payment: ~1.0"
 
 And run composer to update your dependencies:
 
