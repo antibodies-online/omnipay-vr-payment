@@ -41,7 +41,7 @@ to your `composer.json` file:
 ```json
 {
   "require": {
-      "antibodies-online/omnipay-vr-pay": "~1.0"
+      "antibodies-online/omnipay-vr-payment": "~1.0"
   }
 }
 ```
