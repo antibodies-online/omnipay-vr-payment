@@ -18,6 +18,10 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         $data = array();
 
         $data['entityId'] = $this->getEntityId();
+        if(false !== $this->getSimulation()) {
+            $data['testMode'] = $this->getSimulation();
+        }
+        $te3st = 'BLA';
 
         $card = $this->getCard();
         if($card instanceof CreditCard) {
@@ -57,6 +61,14 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
 
     public function getEndpoint() {
         return $this->getParameter('endpoint');
+    }
+
+    public function setSimulation($simulation) {
+        $this->setParameter('simulation', $simulation);
+    }
+
+    public function getSimulation() {
+        return $this->getParameter('simulation');
     }
 
     /**

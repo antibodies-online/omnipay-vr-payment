@@ -16,6 +16,7 @@ class VrPaymentGateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
+            'simulation' => false,
             'testMode' => false,
             'endpoint' => self::ENDPOINT_LIVE
         ];
@@ -105,4 +106,23 @@ class VrPaymentGateway extends AbstractGateway
         }
         return parent::setTestMode($value);
     }
+
+    public function setSimulation($simulation) {
+        $this->setParameter('simulation', $simulation);
+    }
+
+    public function getSimulation() {
+        return $this->getParameter('simulation');
+    }
+
+    public function completeAuthorize(array $parameters = array())
+    {
+        return $this->createRequest(Message\CompleteAuthorizeRequest::class, $parameters);
+    }
+
+    public function completePurchase(array $parameters = array())
+    {
+        return $this->createRequest(Message\CompletePurchaseRequest::class, $parameters);
+    }
+
 }

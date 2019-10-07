@@ -26,6 +26,7 @@ class PurchaseRequest extends AbstractRequest
         $data['currency'] = $this->getCurrency();
         $data['merchantTransactionId'] = $this->getTransactionId();
         $data['paymentType'] = 'DB';
+        $data['shopperResultUrl'] = $this->getReturnUrl();
         return $data;
     }
 
