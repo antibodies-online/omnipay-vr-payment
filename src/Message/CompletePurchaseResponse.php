@@ -5,7 +5,7 @@ namespace Omnipay\VrPayment\Message;
 
 use Omnipay\Common\Message\RedirectResponseInterface;
 
-class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
+class CompletePurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
 
     protected function isExpectedResultCode($resultCode)

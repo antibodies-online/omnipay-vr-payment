@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Omnipay\VrPayment\Message;
-
 
 class CompletePurchaseRequest extends AbstractRequest
 {
@@ -12,12 +10,24 @@ class CompletePurchaseRequest extends AbstractRequest
         return $this->getResourcePath();
     }
 
-    protected function getId() {
+    protected function getId()
+    {
         return $this->getParameter('id');
     }
 
-    protected function getResourcePath() {
+    public function setId($id)
+    {
+        return $this->setParameter('id', $id);
+    }
+
+    protected function getResourcePath()
+    {
         return $this->getParameter('resourcePath');
+    }
+
+    public function setResourcePath($resourcePath)
+    {
+        return $this->setParameter('resourcePath', $resourcePath);
     }
 
     /**
