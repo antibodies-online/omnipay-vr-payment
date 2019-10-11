@@ -37,13 +37,13 @@ class CompletePurchaseRequest extends AbstractRequest
      */
     public function getData()
     {
-        $this->validate('id', 'resourcePath');
-
         $data = parent::getData();
-        $data['id'] = $this->getId();
-        $data['resourcePath'] = $this->getResourcePath();
-
+        unset($data['testMode']);
         return $data;
+    }
+
+    protected function getMethod() {
+        return 'GET';
     }
 
     /**

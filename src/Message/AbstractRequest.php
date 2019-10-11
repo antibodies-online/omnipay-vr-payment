@@ -89,7 +89,11 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         } else {
             $httpResponse = $this->httpClient->request(
                 $this->getMethod(),
-                $this->getEndpoint() . $this->getEndpointRoute()
+                $this->getEndpoint() . $this->getEndpointRoute() .'?'. http_build_query($data),
+                [
+                    "Authorization" => "Bearer " . $this->getAccessToken()
+                ]
+
             );
         }
 
