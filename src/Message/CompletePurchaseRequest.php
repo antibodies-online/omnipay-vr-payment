@@ -2,6 +2,8 @@
 
 namespace Omnipay\VrPayment\Message;
 
+use Omnipay\Common\Message\ResponseInterface;
+
 class CompletePurchaseRequest extends AbstractRequest
 {
 
@@ -30,11 +32,28 @@ class CompletePurchaseRequest extends AbstractRequest
         return $this->setParameter('resourcePath', $resourcePath);
     }
 
-    protected function getMethod() {
+    /**
+     * @param $data
+     * @return ResponseInterface
+     */
+    protected function createGetRequest($data)
+    {
+        return $this->httpClient->request(
+            $this->getMethod(),
+            $this->getEndpoint() . $this->getEndpointRoute() .'?'. http_build_query($data),
+            [
+                "Authorization" => "Bearer " . $this->getAccessToken()
+            ]
+        );
+    }
+
+    protected function getMethod()
+    {
         return 'GET';
     }
 
-    public function getSimulation() {
+    public function getSimulation()
+    {
         return false;
     }
 

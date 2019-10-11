@@ -5,6 +5,7 @@ namespace Omnipay\VrPayment\Message;
 
 use Omnipay\Common\CreditCard;
 use Omnipay\Common\Message\AbstractRequest as OmnipayAbstractRequest;
+use Omnipay\Common\Message\ResponseInterface;
 
 abstract class AbstractRequest extends OmnipayAbstractRequest
 {
@@ -38,35 +39,43 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         return $data;
     }
 
-    protected function getEntityId() {
+    protected function getEntityId()
+    {
         return $this->getParameter('entityId');
     }
 
-    public function setEntityId($entityId) {
+    public function setEntityId($entityId)
+    {
         return $this->setParameter('entityId', $entityId);
     }
 
-    protected function getAccessToken() {
+    protected function getAccessToken()
+    {
         return $this->getParameter('accessToken');
     }
 
-    public function setAccessToken($accessToken) {
+    public function setAccessToken($accessToken)
+    {
         return $this->setParameter('accessToken', $accessToken);
     }
 
-    public function setEndpoint($endpoint) {
+    public function setEndpoint($endpoint)
+    {
         return $this->setParameter('endpoint', $endpoint);
     }
 
-    public function getEndpoint() {
+    public function getEndpoint()
+    {
         return $this->getParameter('endpoint');
     }
 
-    public function setSimulation($simulation) {
+    public function setSimulation($simulation)
+    {
         $this->setParameter('simulation', $simulation);
     }
 
-    public function getSimulation() {
+    public function getSimulation()
+    {
         return $this->getParameter('simulation');
     }
 
@@ -77,24 +86,9 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
     public function sendData($data)
     {
         if('GET' !== $this->getMethod()) {
-            $httpResponse = $this->httpClient->request(
-                $this->getMethod(),
-                $this->getEndpoint() . $this->getEndpointRoute(),
-                [
-                    "Content-Type" => "application/x-www-form-urlencoded",
-                    "Authorization" => "Bearer " . $this->getAccessToken()
-                ],
-                http_build_query($data)
-            );
+            $httpResponse = $this->createPostRequest($data);
         } else {
-            $httpResponse = $this->httpClient->request(
-                $this->getMethod(),
-                $this->getEndpoint() . $this->getEndpointRoute() .'?'. http_build_query($data),
-                [
-                    "Authorization" => "Bearer " . $this->getAccessToken()
-                ]
-
-            );
+            $httpResponse = $this->createGetRequest($data);
         }
 
         $data = json_decode((string)$httpResponse->getBody(), true);
@@ -102,7 +96,37 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         return $this->createResponse($data);
     }
 
-    protected function getMethod() {
+    /**
+     * @param $data
+     * @return ResponseInterface
+     */
+    protected function createPostRequest($data)
+    {
+        return $this->httpClient->request(
+            $this->getMethod(),
+            $this->getEndpoint() . $this->getEndpointRoute(),
+            [
+                "Content-Type" => "application/x-www-form-urlencoded",
+                "Authorization" => "Bearer " . $this->getAccessToken()
+            ],
+            http_build_query($data)
+        );
+    }
+
+    /**
+     * @param $data
+     * @return ResponseInterface
+     */
+    protected function createGetRequest($data)
+    {
+        return $this->httpClient->request(
+            $this->getMethod(),
+            $this->getEndpoint() . $this->getEndpointRoute()
+        );
+    }
+
+    protected function getMethod()
+    {
         return 'POST';
     }
 
