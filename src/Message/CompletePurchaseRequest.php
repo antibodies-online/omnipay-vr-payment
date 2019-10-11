@@ -30,20 +30,12 @@ class CompletePurchaseRequest extends AbstractRequest
         return $this->setParameter('resourcePath', $resourcePath);
     }
 
-    /**
-     * Set up the base data for a purchase request
-     *
-     * @return mixed[]
-     */
-    public function getData()
-    {
-        $data = parent::getData();
-        unset($data['testMode']);
-        return $data;
-    }
-
     protected function getMethod() {
         return 'GET';
+    }
+
+    public function getSimulation() {
+        return false;
     }
 
     /**
