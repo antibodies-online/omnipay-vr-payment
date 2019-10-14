@@ -52,15 +52,6 @@ class CompletePurchaseRequest extends AbstractRequest
         return 'GET';
     }
 
-    public function getData()
-    {
-        $data = parent::getData();
-        if(array_key_exists('testMode', $data)) {
-            unset($data['testMode']);
-        }
-        return $data;
-    }
-
     /**
      *
      */

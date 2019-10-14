@@ -19,9 +19,6 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         $data = array();
 
         $data['entityId'] = $this->getEntityId();
-        if(false !== $this->getSimulation()) {
-            $data['testMode'] = $this->getSimulation();
-        }
 
         $card = $this->getCard();
         if($card instanceof CreditCard) {

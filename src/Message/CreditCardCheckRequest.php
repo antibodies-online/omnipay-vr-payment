@@ -4,7 +4,7 @@
 namespace Omnipay\VrPayment\Message;
 
 
-class CreditCardCheckRequest extends AbstractRequest
+class CreditCardCheckRequest extends AbstractCardPaymentMessageRequest
 {
     public function getEndpointRoute()
     {
