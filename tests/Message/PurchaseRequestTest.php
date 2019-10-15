@@ -34,16 +34,6 @@ class PurchaseRequestTest extends TestCase
     }
 
 
-    public function testSendSuccess()
-    {
-        $this->setMockHttpResponse('PurchaseResponseSuccess.txt');
-        $response = $this->request->send();
 
-        $this->assertTrue($response->isSuccessful());
-        $this->assertFalse($response->isRedirect());
-        $this->assertSame($response->getData()['paymentType'], 'DC');
-        $this->assertSame('8ac7a49f6c619208016c61ca7b0c7680', $response->getTransactionReference());
-        $this->assertSame('Omnipay\VrPayment\Message\PurchaseResponse', get_class($response));
-    }
 
 }

@@ -68,7 +68,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
 
     public function setSimulation($simulation)
     {
-        $this->setParameter('simulation', $simulation);
+        return $this->setParameter('simulation', $simulation);
     }
 
     public function getSimulation()
