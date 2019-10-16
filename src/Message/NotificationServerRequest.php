@@ -22,7 +22,8 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
     const EVENT_CONFIRMATION        = 'CF';
     const EVENT_SECURE_CHECK        = '3D';
 
-    public function isValid() {
+    public function isValid()
+    {
         try {
             $data = $this->getData();
             if(is_array($data) && 0 < count($data)) {
@@ -35,7 +36,8 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
         return false;
     }
 
-    public function isRejectedTransaction() {
+    public function isRejectedTransaction()
+    {
         return preg_match('/^(000\.000\.|000\.100\.1|000\.[36])/', $this->data['payload']['result']['code']);
     }
 
@@ -159,19 +161,23 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
         return $this->getData()['type'];
     }
 
-    public function getResultCode() {
+    public function getResultCode()
+    {
         return $this->data['payload']['result']['code'];
     }
 
-    public function getResultDescription() {
+    public function getResultDescription()
+    {
         return $this->data['payload']['result']['description'];
     }
 
-    public function getNotificationDecryptionKey() {
+    public function getNotificationDecryptionKey()
+    {
         return $this->getParameter('notificationDecryptionKey');
     }
 
-    public function setNotificationDecryptionKey($key) {
+    public function setNotificationDecryptionKey($key)
+    {
         $this->setParameter('notificationDecryptionKey', $key);
     }
 
