@@ -36,7 +36,7 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
     }
 
     public function isRejectedTransaction() {
-        return preg_match('/^(000\.000\.|000\.100\.1|000\.[36])/', $this->getResponse());
+        return preg_match('/^(000\.000\.|000\.100\.1|000\.[36])/', $this->data['payload']['result']['code']);
     }
 
     /**
