@@ -32,15 +32,18 @@ class PurchaseResponseTest extends TestCase
         $this->assertSame('/my-redirect-url/', $this->response->getRedirectUrl());
     }
 
-    public function testGetRedirectData() {
+    public function testGetRedirectData()
+    {
         $this->assertSame(['foo' => 'bar'], $this->response->getRedirectData());
     }
 
-    public function testGetRedirectMethod() {
+    public function testGetRedirectMethod()
+    {
         $this->assertSame('GET', $this->response->getRedirectMethod());
     }
 
-    public function testGetTransactionReference() {
+    public function testGetTransactionReference()
+    {
         $this->assertSame('8ac7a49f6c619208016c61ca7b0c7680', $this->response->getTransactionReference());
     }
 
