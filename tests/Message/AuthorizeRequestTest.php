@@ -31,7 +31,7 @@ class AuthorizeRequestTest extends TestCase
 
     public function testDataWithToken()
     {
-        $this->request->setToken('xyz');
+        $this->assertSame('Omnipay\VrPayment\Message\AuthorizeRequest', get_class($this->request->setToken('xyz')));
         $this->assertSame('xyz', $this->request->getToken());
     }
 

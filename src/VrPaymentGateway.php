@@ -86,7 +86,7 @@ class VrPaymentGateway extends AbstractGateway
     }
 
     public function setAccessToken($accessToken) {
-        $this->setParameter('accessToken', $accessToken);
+        return $this->setParameter('accessToken', $accessToken);
     }
 
     public function getNotificationDecryptionKey() {
@@ -94,7 +94,7 @@ class VrPaymentGateway extends AbstractGateway
     }
 
     public function setNotificationDecryptionKey($key) {
-        $this->setParameter('notificationDecryptionKey', $key);
+        return $this->setParameter('notificationDecryptionKey', $key);
     }
 
     public function setTestMode($value)
