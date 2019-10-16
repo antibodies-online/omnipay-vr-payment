@@ -11,16 +11,16 @@ class PurchaseResponseTest extends TestCase
 
     public function setUp()
     {
-        $request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize(
+        $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
+        $this->request->initialize(
             array(
                 'amount' => '5.00',
                 'currency' => 'USD',
                 'token' => 'foo'
             )
         );
-        $this->setMockHttpResponse('PurchaseResponseSuccess.txt');
-        $this->response = $request->send();
+        $this->setMockHttpResponse('PurchaseResponseWithRedirectSuccess.txt');
+        $this->response = $this->request->send();
     }
 
     public function testIsRedirect()
@@ -28,8 +28,23 @@ class PurchaseResponseTest extends TestCase
         $this->assertTrue($this->response->isRedirect());
     }
 
-    public function testGetRedirectUrl() {
+    public function testIsRedirectWithoutRedirect()
+    {
+        $this->setMockHttpResponse('PurchaseResponseSuccess.txt');
+        $this->response = $this->request->send();
+        $this->assertFalse($this->response->isRedirect());
+    }
+
+    public function testGetRedirectUrl()
+    {
         $this->assertSame('/my-redirect-url/', $this->response->getRedirectUrl());
+    }
+
+    public function testGetRedirectUrlWithoutRedirect()
+    {
+        $this->setMockHttpResponse('PurchaseResponseSuccess.txt');
+        $this->response = $this->request->send();
+        $this->assertSame('', $this->response->getRedirectUrl());
     }
 
     public function testGetRedirectData()
@@ -37,9 +52,23 @@ class PurchaseResponseTest extends TestCase
         $this->assertSame(['foo' => 'bar'], $this->response->getRedirectData());
     }
 
+    public function testGetRedirectDataWithoutRedirect()
+    {
+        $this->setMockHttpResponse('PurchaseResponseSuccess.txt');
+        $this->response = $this->request->send();
+        $this->assertSame([], $this->response->getRedirectData());
+    }
+
     public function testGetRedirectMethod()
     {
         $this->assertSame('GET', $this->response->getRedirectMethod());
+    }
+
+    public function testGetRedirectMethodWithoutRedirect()
+    {
+        $this->setMockHttpResponse('PurchaseResponseSuccess.txt');
+        $this->response = $this->request->send();
+        $this->assertSame('', $this->response->getRedirectMethod());
     }
 
     public function testGetTransactionReference()
