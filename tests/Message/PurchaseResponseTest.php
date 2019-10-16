@@ -25,19 +25,19 @@ class PurchaseResponseTest extends TestCase
 
     public function testIsRedirect()
     {
-        $this->assertFalse($this->response->isRedirect());
+        $this->assertTrue($this->response->isRedirect());
     }
 
     public function testGetRedirectUrl() {
-        $this->assertSame('', $this->response->getRedirectUrl());
+        $this->assertSame('/my-redirect-url/', $this->response->getRedirectUrl());
     }
 
     public function testGetRedirectData() {
-        $this->assertSame([], $this->response->getRedirectData());
+        $this->assertSame(['foo' => 'bar'], $this->response->getRedirectData());
     }
 
     public function testGetRedirectMethod() {
-        $this->assertSame('', $this->response->getRedirectMethod());
+        $this->assertSame('GET', $this->response->getRedirectMethod());
     }
 
     public function testGetTransactionReference() {
