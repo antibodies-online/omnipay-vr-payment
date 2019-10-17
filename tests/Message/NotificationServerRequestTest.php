@@ -76,6 +76,55 @@ class NotificationServerRequestTest extends TestCase
         $this->assertSame(NotificationServerRequest::STATUS_FAILED, $notification->getTransactionStatus());
     }
 
+    public function testIsRegistrationReturnsFalse()
+    {
+        $notification = $this->gateway->acceptNotification();
+        $notification->send();
+        $this->assertFalse($notification->isRegistration());
+    }
+
+    public function testIsStatusFailedReturnsFalse()
+    {
+        $notification = $this->gateway->acceptNotification();
+        $notification->send();
+        $this->assertFalse($notification->isStatusFailed());
+    }
+
+    public function testIsStatusFailedReturnsTrue()
+    {
+        $json = $this->loadRequestJson();
+        $json = str_replace('000.100.110', '000.400.030', $json);
+        $encrypted = openssl_encrypt($json, 'aes-256-gcm', $this->key, OPENSSL_RAW_DATA, $this->iv, $this->authTag);
+
+        $request = new Request([], [], [], [], [], ['HTTP_X-Initialization-Vector' => bin2hex($this->iv), 'HTTP_X-Authentication-Tag' => bin2hex($this->authTag)], bin2hex($encrypted));
+        $this->gateway = new VrPaymentGateway($this->getHttpClient(), $request);
+        $this->gateway->setNotificationDecryptionKey(bin2hex($this->key));
+        $notification = $this->gateway->acceptNotification();
+        $notification->send();
+        $this->assertTrue($notification->isStatusFailed());
+    }
+
+    public function testIsStatusPendingReturnsFalse()
+    {
+        $notification = $this->gateway->acceptNotification();
+        $notification->send();
+        $this->assertFalse($notification->isStatusPending());
+    }
+
+    public function testIsStatusPendingReturnsTrue()
+    {
+        $json = $this->loadRequestJson();
+        $json = str_replace('000.100.110', '000.200.000', $json);
+        $encrypted = openssl_encrypt($json, 'aes-256-gcm', $this->key, OPENSSL_RAW_DATA, $this->iv, $this->authTag);
+
+        $request = new Request([], [], [], [], [], ['HTTP_X-Initialization-Vector' => bin2hex($this->iv), 'HTTP_X-Authentication-Tag' => bin2hex($this->authTag)], bin2hex($encrypted));
+        $this->gateway = new VrPaymentGateway($this->getHttpClient(), $request);
+        $this->gateway->setNotificationDecryptionKey(bin2hex($this->key));
+        $notification = $this->gateway->acceptNotification();
+        $notification->send();
+        $this->assertTrue($notification->isStatusPending());
+    }
+
     public function testGetMessage()
     {
         $notification = $this->gateway->acceptNotification();

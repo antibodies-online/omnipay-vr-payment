@@ -22,6 +22,10 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
     const EVENT_CONFIRMATION        = 'CF';
     const EVENT_SECURE_CHECK        = '3D';
 
+    const NOTIFICATION_TYPE_PAYMENT          = 'PAYMENT';
+    const NOTIFICATION_TYPE_REGISTRATION     = 'REGISTRATION';
+    const NOTIFICATION_TYPE_RISK             = 'RISK';
+
     public function isValid()
     {
         try {
@@ -154,6 +158,21 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
     public function getNotificationType()
     {
         return $this->getData()['type'];
+    }
+
+    public function isRegistration()
+    {
+        return self::NOTIFICATION_TYPE_REGISTRATION === $this->getNotificationType();
+    }
+
+    public function isStatusFailed()
+    {
+        return self::STATUS_FAILED === $this->getTransactionStatus();
+    }
+
+    public function isStatusPending()
+    {
+        return self::STATUS_PENDING === $this->getTransactionStatus();
     }
 
     public function getResultCode()
