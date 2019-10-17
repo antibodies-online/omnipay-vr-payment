@@ -32,6 +32,12 @@ class AbstractRequestTest extends TestCase
         $this->assertSame('abc123', $this->request->getEndpoint());
     }
 
+    public function testGetSimulation()
+    {
+        $this->assertSame($this->request, $this->request->setSimulation(true));
+        $this->assertSame(true, $this->request->getSimulation());
+    }
+
     public function testGetData()
     {
         $this->request->initialize(['card' => $this->getValidCard()]);

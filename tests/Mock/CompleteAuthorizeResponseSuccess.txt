@@ -1,8 +1,0 @@
-HTTP/1.1 200 OK
-Content-Type: application/json;charset=UTF-8
-Date: Mon, 05 Aug 2019 12:39:15 GMT
-Server: Apache-Coyote/1.1
-X-Content-Type-Options: nosniff
-Content-Length: 684
-
-{"id":"8ac7a49f6c619208016c61ca7b0c7680","redirect":{"url":"/my-redirect-url/","method":"GET","parameters":[{"name":"foo","value":"bar"}]},"paymentType":"PA","amount":"117.81","currency":"EUR","descriptor":"2193.8101.7100 Kreditkarten ","merchantTransactionId":"Ordernumber","result":{"code":"000.100.110","description":"Request successfully processed in 'Merchant in Integrator Test Mode'"},"resultDetails":{"ConnectorTxID1":"8ac7a49f6c619208016c61ca7b0c7680","ConnectorTxID3":"619208016c61ca7b0c7680","ConnectorTxID2":"8ac7a49f","AcquirerResponse":"Success"},"risk":{"score":"100"},"buildNumber":"235e264ce798be6e65ec841a0f6a22860e673fd0@2019-08-05 03:42:28 +0000","timestamp":"2019-08-05 12:39:15+0000","ndc":"8ac7a4ca6c1daae9016c1f2845c302d7_61c47e13520a43f3bdbd9f7d5ef77516"}

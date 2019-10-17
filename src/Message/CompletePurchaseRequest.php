@@ -9,21 +9,6 @@ class CompletePurchaseRequest extends AbstractRequest
 
     protected function getEndpointRoute()
     {
-        return $this->getResourcePath();
-    }
-
-    protected function getId()
-    {
-        return $this->getParameter('id');
-    }
-
-    public function setId($id)
-    {
-        return $this->setParameter('id', $id);
-    }
-
-    protected function getResourcePath()
-    {
         return $this->getParameter('resourcePath');
     }
 

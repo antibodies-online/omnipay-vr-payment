@@ -29,7 +29,6 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     public function getRedirectData()
     {
         if($this->isRedirect()) {
-
             $parameters = [];
             foreach($this->getData()['redirect']['parameters'] as $param) {
                 $parameters[$param['name']] = $param['value'];
@@ -47,7 +46,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
             }
             return 'POST';
         }
-        return '';
+        return null;
     }
 
     public function getTransactionReference()

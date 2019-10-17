@@ -68,7 +68,7 @@ class PurchaseResponseTest extends TestCase
     {
         $this->setMockHttpResponse('PurchaseResponseSuccess.txt');
         $this->response = $this->request->send();
-        $this->assertSame('', $this->response->getRedirectMethod());
+        $this->assertSame(null, $this->response->getRedirectMethod());
     }
 
     public function testGetTransactionReference()

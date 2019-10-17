@@ -13,12 +13,6 @@ class AbstractCardPaymentMessageRequestTest extends TestCase
         $this->request->initialize();
     }
 
-    public function testGetSimulation()
-    {
-        $this->assertSame($this->request, $this->request->setSimulation(true));
-        $this->assertSame(true, $this->request->getSimulation());
-    }
-
     public function testGetData()
     {
         $this->request->setSimulation(true);
