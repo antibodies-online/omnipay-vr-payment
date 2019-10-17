@@ -5,7 +5,7 @@ namespace Omnipay\VrPayment\Message;
 
 use Omnipay\Common\Message\RedirectResponseInterface;
 
-class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
+class CompletePurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
 
     protected function isExpectedResultCode($resultCode)
@@ -29,6 +29,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     public function getRedirectData()
     {
         if($this->isRedirect()) {
+
             $parameters = [];
             foreach($this->getData()['redirect']['parameters'] as $param) {
                 $parameters[$param['name']] = $param['value'];
@@ -46,7 +47,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
             }
             return 'POST';
         }
-        return null;
+        return '';
     }
 
     public function getTransactionReference()

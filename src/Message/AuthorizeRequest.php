@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Omnipay\VrPayment\Message;
-
 
 class AuthorizeRequest extends PurchaseRequest
 {

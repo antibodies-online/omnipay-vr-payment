@@ -44,17 +44,4 @@ class CaptureRequestTest extends TestCase
         $this->assertSame('USD', $data['currency']);
         $this->assertSame('CP', $data['paymentType']);
     }
-
-    public function testSendSuccess()
-    {
-        $this->setMockHttpResponse('CaptureResponseSuccess.txt');
-        $response = $this->request->send();
-
-        $this->assertTrue($response->isSuccessful());
-        $this->assertFalse($response->isRedirect());
-        $this->assertSame($response->getData()['paymentType'], 'CP');
-        $this->assertSame('8ac7a49f6c619208016c61c907ff73bc', $response->getTransactionReference());
-        $this->assertSame('Omnipay\VrPayment\Message\CaptureResponse', get_class($response));
-    }
-
 }

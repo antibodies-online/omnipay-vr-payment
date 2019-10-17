@@ -14,7 +14,10 @@ class VrPaymentGatewayTest extends GatewayTestCase
     {
         parent::setUp();
 
-        $this->gateway = new VrPaymentGateway($this->getHttpClient(), $this->getHttpRequest());
+        $httpRequest = $this->getHttpRequest();
+        $httpRequest->initialize([],[],[],[],[],['QUERY_STRING' => 'resourcePath=foobar']);
+
+        $this->gateway = new VrPaymentGateway($this->getHttpClient(), $httpRequest);
         $this->gateway->setEntityId('foo');
 
         $this->options = array(
@@ -32,11 +35,42 @@ class VrPaymentGatewayTest extends GatewayTestCase
         $this->assertEquals('500', $request->getAmountInteger());
     }
 
-    public function testEndpointDependsOnTestMode() {
+    public function testEndpointDependsOnTestMode() 
+    {
         $this->assertSame(VrPaymentGateway::ENDPOINT_LIVE, $this->gateway->getEndpoint());
         $this->gateway->setTestMode(true);
         $this->assertSame(VrPaymentGateway::ENDPOINT_TEST, $this->gateway->getEndpoint());
         $this->gateway->setTestMode(false);
         $this->assertSame(VrPaymentGateway::ENDPOINT_LIVE, $this->gateway->getEndpoint());
     }
+
+    public function testGetEntityId()
+    {
+        $this->assertSame('foo', $this->gateway->getEntityId());
+    }
+
+    public function testGetAccessToken()
+    {
+        $this->assertSame('Omnipay\VrPayment\VrPaymentGateway', get_class($this->gateway->setAccessToken('access-token')));
+        $this->assertSame('access-token', $this->gateway->getAccessToken());
+    }
+
+    public function testGetNotificationDecryptionKey()
+    {
+        $this->assertSame('Omnipay\VrPayment\VrPaymentGateway', get_class($this->gateway->setNotificationDecryptionKey('decrypt')));
+        $this->assertSame('decrypt', $this->gateway->getNotificationDecryptionKey());
+    }
+
+    public function testCheckCreditCardCheck()
+    {
+        $response = $this->gateway->creditCardCheck(['card' => $this->getValidCard()]);
+        $this->assertSame('Omnipay\VrPayment\Message\CreditCardCheckRequest', get_class($response));
+    }
+
+    public function testCheckCreditCardCheckStatus()
+    {
+        $response = $this->gateway->creditCardCheckStatus(['card' => $this->getValidCard()]);
+        $this->assertSame('Omnipay\VrPayment\Message\CreditCardCheckStatusRequest', get_class($response));
+    }
+
 }

@@ -1,10 +1,8 @@
 <?php
 
-
 namespace Omnipay\VrPayment\Message;
 
-
-class RefundRequest extends AbstractRequest
+class RefundRequest extends AbstractCardPaymentMessageRequest
 {
     protected function getEndpointRoute()
     {

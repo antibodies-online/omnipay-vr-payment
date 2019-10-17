@@ -22,7 +22,12 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
     const EVENT_CONFIRMATION        = 'CF';
     const EVENT_SECURE_CHECK        = '3D';
 
-    public function isValid() {
+    const NOTIFICATION_TYPE_PAYMENT          = 'PAYMENT';
+    const NOTIFICATION_TYPE_REGISTRATION     = 'REGISTRATION';
+    const NOTIFICATION_TYPE_RISK             = 'RISK';
+
+    public function isValid()
+    {
         try {
             $data = $this->getData();
             if(is_array($data) && 0 < count($data)) {
@@ -68,25 +73,12 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
      */
     public function getTransactionStatus()
     {
-        if((bool)preg_match('/^(000\.000\.|000\.100\.1|000\.[36])/', $this->data['payload']['result']['code'])
-        || (bool)preg_match('/^(000\.200)/', $this->data['payload']['result']['code'])) {
-            if ($this->getTxStatus() == static::EVENT_REVERSAL
-                || $this->getTxStatus() == static::EVENT_REFUND
-                || $this->getTxStatus() == static::EVENT_CAPTURE
-                || $this->getTxStatus() == static::EVENT_DEBIT
-                || $this->getTxStatus() == static::EVENT_CREDIT
-            ) {
-                return static::STATUS_COMPLETED;
-            }
+        if((bool)preg_match('/^(000\.000\.|000\.100\.1|000\.[36])/', $this->data['payload']['result']['code'])) {
+            return static::STATUS_COMPLETED;
+        }
 
-            if ($this->getTxStatus() == static::EVENT_AUTHORIZATION
-                || $this->getTxStatus() == static::EVENT_SECURE_CHECK
-                || $this->getTxStatus() == static::EVENT_CONFIRMATION
-                || $this->getTxStatus() == static::EVENT_DEBIT
-                || $this->getTxStatus() == static::EVENT_REGISTER
-            ) {
-                return static::STATUS_PENDING;
-            }
+        if ((bool)preg_match('/^(000\.200)/', $this->data['payload']['result']['code'])) {
+            return static::STATUS_PENDING;
         }
 
         return static::STATUS_FAILED;
@@ -127,7 +119,10 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
      */
     public function getTransactionId()
     {
-        return $this->data['payload']['merchantTransactionId'];
+        if(isset($this->data['payload']['merchantTransactionId'])) {
+            return $this->data['payload']['merchantTransactionId'];
+        }
+        return null;
     }
 
     /**
@@ -140,12 +135,19 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
 
     public function getAmount()
     {
-        return $this->data['payload']['presentationAmount'];
+        if(isset($this->data['payload']['presentationCurrency'])) {
+            return $this->data['payload']['presentationAmount'];
+        } else {
+            return null;
+        }
     }
 
     public function getCurrency()
     {
-        return $this->data['payload']['presentationCurrency'];
+        if(isset($this->data['payload']['presentationCurrency'])) {
+            return $this->data['payload']['presentationCurrency'];
+        }
+        return null;
     }
 
     public function getCardType()
@@ -158,11 +160,38 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
         return $this->getData()['type'];
     }
 
-    public function getNotificationDecryptionKey() {
+    public function isRegistration()
+    {
+        return self::NOTIFICATION_TYPE_REGISTRATION === $this->getNotificationType();
+    }
+
+    public function isStatusFailed()
+    {
+        return self::STATUS_FAILED === $this->getTransactionStatus();
+    }
+
+    public function isStatusPending()
+    {
+        return self::STATUS_PENDING === $this->getTransactionStatus();
+    }
+
+    public function getResultCode()
+    {
+        return $this->data['payload']['result']['code'];
+    }
+
+    public function getResultDescription()
+    {
+        return $this->data['payload']['result']['description'];
+    }
+
+    public function getNotificationDecryptionKey()
+    {
         return $this->getParameter('notificationDecryptionKey');
     }
 
-    public function setNotificationDecryptionKey($key) {
+    public function setNotificationDecryptionKey($key)
+    {
         $this->setParameter('notificationDecryptionKey', $key);
     }
 

@@ -25,25 +25,14 @@ class AuthorizeRequestTest extends TestCase
 
         $this->assertSame('5.00', $data['amount']);
         $this->assertSame('USD', $data['currency']);
+        $this->assertSame('PA', $data['paymentType']);
+        $this->assertTrue(array_key_exists('testMode', $data));
     }
 
     public function testDataWithToken()
     {
-        $this->request->setToken('xyz');
+        $this->assertSame('Omnipay\VrPayment\Message\AuthorizeRequest', get_class($this->request->setToken('xyz')));
         $this->assertSame('xyz', $this->request->getToken());
-    }
-
-
-    public function testSendSuccess()
-    {
-        $this->setMockHttpResponse('AuthorizeResponseSuccess.txt');
-        $response = $this->request->send();
-
-        $this->assertTrue($response->isSuccessful());
-        $this->assertFalse($response->isRedirect());
-        $this->assertSame($response->getData()['paymentType'], 'PA');
-        $this->assertSame('8ac7a49f6c619208016c61ca7b0c7680', $response->getTransactionReference());
-        $this->assertSame('Omnipay\VrPayment\Message\AuthorizeResponse', get_class($response));
     }
 
 }

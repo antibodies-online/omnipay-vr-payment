@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Omnipay\VrPayment\Message;
-
 
 use Mockery;
 use Omnipay\Tests\TestCase;
@@ -29,18 +27,6 @@ class CreditCardCheckStatusRequestTest extends TestCase
         $data = $this->request->getData();
 
         $this->assertSame([], $data);
-    }
-
-    public function testSendSuccess()
-    {
-        $this->setMockHttpResponse('CreditCardCheckStatusResponseSuccess.txt');
-        $response = $this->request->send();
-
-        $this->assertTrue($response->isSuccessful());
-        $this->assertFalse($response->isRedirect());
-        $this->assertSame('8ac7a4a06c61a259016c62136baa6797', $response->getTransactionReference());
-        $this->assertSame('VISA', $response->getCardType());
-        $this->assertSame('Omnipay\VrPayment\Message\CreditCardCheckStatusResponse', get_class($response));
     }
 
 }

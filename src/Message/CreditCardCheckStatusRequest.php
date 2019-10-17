@@ -18,7 +18,8 @@ class CreditCardCheckStatusRequest extends AbstractRequest
         $this->setEndpointRoute($queryStrings['resourcePath']);
     }
 
-    protected function setEndpointRoute($path) {
+    protected function setEndpointRoute($path)
+    {
         $this->resourcePath = $path;
     }
 

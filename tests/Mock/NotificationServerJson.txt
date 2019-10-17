@@ -9,6 +9,7 @@
       "presentationAmount":"92.00",
       "presentationCurrency":"EUR",
       "descriptor":"3017.7139.1650 OPP_Channel ",
+      "merchantTransactionId":"1337",
       "result":{
          "code":"000.100.110",
          "description":"Request successfully processed in 'Merchant in Integrator Test Mode'"

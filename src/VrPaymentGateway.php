@@ -16,6 +16,7 @@ class VrPaymentGateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
+            'simulation' => false,
             'testMode' => false,
             'endpoint' => self::ENDPOINT_LIVE
         ];
@@ -64,36 +65,44 @@ class VrPaymentGateway extends AbstractGateway
         return $this->createRequest(Message\CreditCardCheckStatusRequest::class, $parameters);
     }
 
-    public function getEndpoint() {
+    public function getEndpoint()
+    {
         return $this->getParameter('endpoint');
     }
 
-    public function setEndpoint($endpoint) {
+    public function setEndpoint($endpoint)
+    {
         return $this->setParameter('endpoint', $endpoint);
     }
 
-    public function getEntityId() {
+    public function getEntityId()
+    {
         return $this->getParameter('entityId');
     }
 
-    public function setEntityId($entityId) {
+    public function setEntityId($entityId)
+    {
         return $this->setParameter('entityId', $entityId);
     }
 
-    public function getAccessToken() {
+    public function getAccessToken()
+    {
         return $this->getParameter('accessToken');
     }
 
-    public function setAccessToken($accessToken) {
-        $this->setParameter('accessToken', $accessToken);
+    public function setAccessToken($accessToken)
+    {
+        return $this->setParameter('accessToken', $accessToken);
     }
 
-    public function getNotificationDecryptionKey() {
+    public function getNotificationDecryptionKey()
+    {
         return $this->getParameter('notificationDecryptionKey');
     }
 
-    public function setNotificationDecryptionKey($key) {
-        $this->setParameter('notificationDecryptionKey', $key);
+    public function setNotificationDecryptionKey($key)
+    {
+        return $this->setParameter('notificationDecryptionKey', $key);
     }
 
     public function setTestMode($value)
@@ -105,4 +114,25 @@ class VrPaymentGateway extends AbstractGateway
         }
         return parent::setTestMode($value);
     }
+
+    public function setSimulation($simulation)
+    {
+        return $this->setParameter('simulation', $simulation);
+    }
+
+    public function getSimulation()
+    {
+        return $this->getParameter('simulation');
+    }
+
+    public function completeAuthorize(array $parameters = array())
+    {
+        return $this->createRequest(Message\CompleteAuthorizeRequest::class, $parameters);
+    }
+
+    public function completePurchase(array $parameters = array())
+    {
+        return $this->createRequest(Message\CompletePurchaseRequest::class, $parameters);
+    }
+
 }

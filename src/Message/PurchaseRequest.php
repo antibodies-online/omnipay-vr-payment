@@ -4,7 +4,7 @@
 namespace Omnipay\VrPayment\Message;
 
 
-class PurchaseRequest extends AbstractRequest
+class PurchaseRequest extends AbstractCardPaymentMessageRequest
 {
 
     protected function getEndpointRoute()
@@ -26,6 +26,7 @@ class PurchaseRequest extends AbstractRequest
         $data['currency'] = $this->getCurrency();
         $data['merchantTransactionId'] = $this->getTransactionId();
         $data['paymentType'] = 'DB';
+        $data['shopperResultUrl'] = $this->getReturnUrl();
         return $data;
     }
 
