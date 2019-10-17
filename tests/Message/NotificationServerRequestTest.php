@@ -41,27 +41,6 @@ class NotificationServerRequestTest extends TestCase
         $this->assertFalse($notification->isValid());
     }
 
-    public function testIsRejectedTransactionReturnsOne()
-    {
-        $notification = $this->gateway->acceptNotification();
-        $notification->send();
-        $this->assertSame(1, $notification->isRejectedTransaction());
-    }
-
-    public function testIsRejectedTransactionReturnsZero()
-    {
-        $json = $this->loadRequestJson();
-        $json = str_replace('000.100.110', '', $json);
-        $encrypted = openssl_encrypt($json, 'aes-256-gcm', $this->key, OPENSSL_RAW_DATA, $this->iv, $this->authTag);
-
-        $request = new Request([], [], [], [], [], ['HTTP_X-Initialization-Vector' => bin2hex($this->iv), 'HTTP_X-Authentication-Tag' => bin2hex($this->authTag)], bin2hex($encrypted));
-        $this->gateway = new VrPaymentGateway($this->getHttpClient(), $request);
-        $this->gateway->setNotificationDecryptionKey(bin2hex($this->key));
-        $notification = $this->gateway->acceptNotification();
-        $notification->send();
-        $this->assertSame(0, $notification->isRejectedTransaction());
-    }
-
     public function testGetTransactionStatus()
     {
         $notification = $this->gateway->acceptNotification();

@@ -37,16 +37,6 @@ class NotificationServerRequest extends OmnipayAbstractRequest implements Notifi
     }
 
     /**
-     * Returns 0 if transaction is rejected, 0 otherwise
-     *
-     * @return int
-     */
-    public function isRejectedTransaction()
-    {
-        return preg_match('/^(000\.000\.|000\.100\.1|000\.[36])/', $this->data['payload']['result']['code']);
-    }
-
-    /**
      * Get the raw data array for this message. The format of this varies from gateway to
      * gateway, but will usually be either an associative array, or a SimpleXMLElement.
      *
