@@ -13,7 +13,7 @@ class CreditCardCheckResponseTest extends TestCase
     {
         $request = new CreditCardCheckRequest($this->getHttpClient(), $this->getHttpRequest());
         $request->initialize(
-            array()
+            array('endpoint' => 'https://example.com')
         );
 
         $this->setMockHttpResponse('CreditCardCheckResponseSuccess.txt');
@@ -25,7 +25,7 @@ class CreditCardCheckResponseTest extends TestCase
     }
 
     public function testGetPaymentFormJsUrl() {
-        $this->assertSame('https://test.vr-pay-ecommerce.de/v1/paymentWidgets.js?checkoutId=2CFB6EE6F889C290A469A5C75755267D.uat01-vm-tx03', $this->response->getPaymentFormJsUrl());
+        $this->assertSame('https://example.com/v1/paymentWidgets.js?checkoutId=2CFB6EE6F889C290A469A5C75755267D.uat01-vm-tx03', $this->response->getPaymentFormJsUrl());
     }
 
     public function testSendSuccess()
