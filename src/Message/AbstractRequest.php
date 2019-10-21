@@ -89,6 +89,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         }
 
         $data = json_decode((string)$httpResponse->getBody(), true);
+        $data['endpoint'] = $this->getEndpoint();
 
         return $this->createResponse($data);
     }
