@@ -21,15 +21,15 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         $data['entityId'] = $this->getEntityId();
 
         $card = $this->getCard();
-        if($card instanceof CreditCard) {
-            $data['billing.city'] = $card->getBillingCity();
-            $data['billing.country'] = $card->getBillingCountry();
-            $data['billing.street1'] = $card->getBillingAddress1();
-            $data['billing.street2'] = $card->getBillingAddress2();
-            $data['billing.postcode'] = $card->getBillingPostcode();
-            $data['billing.state'] = $card->getBillingState();
-            $data['customer.companyName'] = $card->getBillingCompany();
-            $data['customer.email'] = $card->getEmail();
+        if ($card instanceof CreditCard) {
+            $data['billing.city'] = mb_substr($card->getBillingCity(), 0, 80);
+            $data['billing.country'] = mb_substr($card->getBillingCountry(), 0, 2);
+            $data['billing.street1'] = mb_substr($card->getBillingAddress1(), 0, 100);
+            $data['billing.street2'] = mb_substr($card->getBillingAddress2(), 0, 100);
+            $data['billing.postcode'] = mb_substr($card->getBillingPostcode(), 0, 30);
+            $data['billing.state'] = mb_substr($card->getBillingState(), 0, 50);
+            $data['customer.companyName'] = mb_substr($card->getBillingCompany(), 0, 60);
+            $data['customer.email'] = mb_substr($card->getEmail(), 0, 128);
             $data['customer.givenName'] = $card->getFirstName();
             $data['customer.surname'] = $card->getLastName();
         }
