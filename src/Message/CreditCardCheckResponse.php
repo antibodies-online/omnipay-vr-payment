@@ -13,7 +13,7 @@ class CreditCardCheckResponse extends AbstractResponse
 
     public function getPaymentFormJsUrl()
     {
-        return 'https://test.vr-pay-ecommerce.de/v1/paymentWidgets.js?checkoutId=' . $this->getCheckoutId();
+        return  $this->getData()['endpoint'] . '/v1/paymentWidgets.js?checkoutId=' . $this->getCheckoutId();
     }
 
     protected function isExpectedResultCode($resultCode)
