@@ -22,14 +22,14 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
 
         $card = $this->getCard();
         if($card instanceof CreditCard) {
-            $data['billing.city'] = $card->getBillingCity();
-            $data['billing.country'] = $card->getBillingCountry();
-            $data['billing.street1'] = $card->getBillingAddress1();
-            $data['billing.street2'] = $card->getBillingAddress2();
-            $data['billing.postcode'] = $card->getBillingPostcode();
-            $data['billing.state'] = $card->getBillingState();
-            $data['customer.companyName'] = $card->getBillingCompany();
-            $data['customer.email'] = $card->getEmail();
+            $data['billing.city'] = substr($card->getBillingCity(), 0, 80);
+            $data['billing.country'] = substr($card->getBillingCountry(), 0, 2);
+            $data['billing.street1'] = substr($card->getBillingAddress1(), 0, 100);
+            $data['billing.street2'] = substr($card->getBillingAddress2(), 0, 100);
+            $data['billing.postcode'] = substr($card->getBillingPostcode(), 0, 30);
+            $data['billing.state'] = substr($card->getBillingState(), 0, 50);
+            $data['customer.companyName'] = substr($card->getBillingCompany(), 0, 60);
+            $data['customer.email'] = substr($card->getEmail(), 0, 128);
             $data['customer.givenName'] = $card->getFirstName();
             $data['customer.surname'] = $card->getLastName();
         }
@@ -89,6 +89,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         }
 
         $data = json_decode((string)$httpResponse->getBody(), true);
+        $data['endpoint'] = $this->getEndpoint();
 
         return $this->createResponse($data);
     }
