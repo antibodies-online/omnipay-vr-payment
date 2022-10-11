@@ -3,7 +3,6 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/antibodies-online/omnipay-vr-payment/master/LICENSE.md)
 [![Packagist](https://img.shields.io/packagist/v/antibodies-online/omnipay-vr-payment.svg)](https://packagist.org/packages/antibodies-online/omnipay-vr-payment)
 [![GitHub issues](https://img.shields.io/github/issues/antibodies-online/omnipay-vr-payment.svg)](https://github.com/antibodies-online/omnipay-vr-payment/issues)
-[![Build Status](https://travis-ci.org/antibodies-online/omnipay-vr-payment.svg?branch=master)](https://travis-ci.org/antibodies-online/omnipay-vr-payment)
 [![PHP Composer Test](https://github.com/antibodies-online/omnipay-vr-payment/actions/workflows/php.yml/badge.svg)](https://github.com/antibodies-online/omnipay-vr-payment/actions/workflows/php.yml)
 
 
