@@ -4,8 +4,7 @@
 [![Packagist](https://img.shields.io/packagist/v/antibodies-online/omnipay-vr-payment.svg)](https://packagist.org/packages/antibodies-online/omnipay-vr-payment)
 [![GitHub issues](https://img.shields.io/github/issues/antibodies-online/omnipay-vr-payment.svg)](https://github.com/antibodies-online/omnipay-vr-payment/issues)
 [![Build Status](https://travis-ci.org/antibodies-online/omnipay-vr-payment.svg?branch=master)](https://travis-ci.org/antibodies-online/omnipay-vr-payment)
-[![Code Coverage](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/antibodies-online/omnipay-vr-payment/?branch=master)
+[![PHP Composer Test](https://github.com/antibodies-online/omnipay-vr-payment/actions/workflows/php.yml/badge.svg)](https://github.com/antibodies-online/omnipay-vr-payment/actions/workflows/php.yml)
 
 
 Table of Contents

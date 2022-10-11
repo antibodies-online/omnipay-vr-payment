@@ -30,5 +30,8 @@
             "Omnipay\\VrPayment\\" : "src/"
         }
     },
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts": {
+    	"test": "vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover"
+  	}
 }
