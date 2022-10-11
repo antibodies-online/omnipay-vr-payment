@@ -4,11 +4,12 @@
 namespace Omnipay\VrPayment\Message;
 
 
+use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Tests\TestCase;
 
 class CaptureRequestTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CaptureRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(
@@ -20,11 +21,9 @@ class CaptureRequestTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException Omnipay\Common\Exception\InvalidRequestException
-     * @expectedExceptionMessage The transactionReference parameter is required
-     */
     public function testTransactionReferenceMandatory() {
+        $this->expectException(InvalidRequestException::class);
+        $this->expectExceptionMessage('The transactionReference parameter is required');
         $this->request = new CaptureRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(
             array(

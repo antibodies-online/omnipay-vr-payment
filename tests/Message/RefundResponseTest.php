@@ -8,7 +8,7 @@ class RefundResponseTest extends TestCase
 {
     private $response;
 
-    public function setUp()
+    public function setUp(): void
     {
         $request = new RefundRequest($this->getHttpClient(), $this->getHttpRequest());
         $request->initialize(

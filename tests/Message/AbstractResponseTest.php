@@ -10,7 +10,7 @@ class AbstractResponseTest extends TestCase
 
     private $response;
 
-    public function setUp()
+    public function setUp(): void
     {
         $request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
 

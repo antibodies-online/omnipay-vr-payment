@@ -19,11 +19,11 @@
         }
     ],
     "require": {
-        "php": "^7.1 || ^8.0",
+        "php": "^8.0",
         "omnipay/common": "^3"
     },
     "require-dev": {
-        "omnipay/tests": "^3 || ^4"
+        "omnipay/tests": "^4"
     },
     "autoload": {
         "psr-4": {
@@ -32,6 +32,6 @@
     },
     "prefer-stable": true,
     "scripts": {
-    	"test": "vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover"
-  	}
+    	"test": "vendor/bin/phpunit"
+    }
 }

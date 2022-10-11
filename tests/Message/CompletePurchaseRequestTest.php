@@ -7,7 +7,7 @@ use Omnipay\Tests\TestCase;
 class CompletePurchaseRequestTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CompletePurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(

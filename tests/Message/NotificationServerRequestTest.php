@@ -16,7 +16,7 @@ class NotificationServerRequestTest extends TestCase
     private $authTag = 'MYAUTH';
     private $gateway;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $json = $this->loadRequestJson();
         $this->content = json_decode($json, true);

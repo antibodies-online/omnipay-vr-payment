@@ -9,7 +9,7 @@ class CompletePurchaseResponseTest extends TestCase
 
     private $response;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CompletePurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(

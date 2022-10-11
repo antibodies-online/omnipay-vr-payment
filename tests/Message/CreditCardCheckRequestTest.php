@@ -8,7 +8,7 @@ use Omnipay\Tests\TestCase;
 
 class CreditCardCheckRequestTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CreditCardCheckRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(

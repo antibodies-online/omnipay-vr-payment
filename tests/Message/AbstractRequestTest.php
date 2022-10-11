@@ -8,7 +8,7 @@ use Omnipay\Tests\TestCase;
 
 class AbstractRequestTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = Mockery::mock('\Omnipay\VrPayment\Message\AbstractRequest')->makePartial();
         $this->request->initialize();

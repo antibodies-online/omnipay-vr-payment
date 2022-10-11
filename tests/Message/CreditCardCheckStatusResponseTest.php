@@ -12,7 +12,7 @@ class CreditCardCheckStatusResponseTest extends TestCase
 
     private $response;
 
-    public function setUp()
+    public function setUp(): void
     {
         $mockHttpRequest = Mockery::mock(Request::class);
         $mockHttpRequest->shouldReceive('getQueryString')

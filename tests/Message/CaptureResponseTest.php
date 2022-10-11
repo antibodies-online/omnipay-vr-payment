@@ -9,7 +9,7 @@ class CaptureResponseTest extends TestCase
 
     private $response;
 
-    public function setUp()
+    public function setUp(): void
     {
         $request = new CaptureRequest($this->getHttpClient(), $this->getHttpRequest());
         $request->initialize(

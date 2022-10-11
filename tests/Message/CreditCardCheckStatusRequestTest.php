@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CreditCardCheckStatusRequestTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $mock = Mockery::mock(Request::class);
         $mock->shouldReceive('getQueryString')

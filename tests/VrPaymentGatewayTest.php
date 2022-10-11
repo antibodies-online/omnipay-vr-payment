@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 
 class VrPaymentGatewayTest extends GatewayTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

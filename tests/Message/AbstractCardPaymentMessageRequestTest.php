@@ -7,7 +7,7 @@ use Omnipay\Tests\TestCase;
 
 class AbstractCardPaymentMessageRequestTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = Mockery::mock('\Omnipay\VrPayment\Message\AbstractCardPaymentMessageRequest')->makePartial();
         $this->request->initialize();
