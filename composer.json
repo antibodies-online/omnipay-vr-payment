@@ -1,6 +1,7 @@
 {
     "name": "antibodies-online/omnipay-vr-payment",
     "description": "VR Payment gateway driver for the Omnipay PHP payment processing library",
+    "homepage": "https://www.antikoerper-online.de/",
     "keywords": [
         "vr",
         "gateway",
