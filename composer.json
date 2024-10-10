@@ -10,7 +10,6 @@
         "pay",
         "payment"
     ],
-    "homepage": "https://github.com/antibodies-online/omnipay-vr-payment",
     "type": "library",
     "license": "MIT",
     "authors": [
